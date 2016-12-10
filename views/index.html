@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Python - Bottle URL Shortener!</title>
+	<link rel="stylesheet" href="{{ url('static', filename='bootstrap.min.css') }}">
+    <script src="{{ url('static', filename='jquery.min.js') }}"></script>
+    <style>
+        .jumbotron {
+            background-color: #fff;
+        }
+    </style>
+    <script>
+        $(function () {
+            $.btnShort = function () {
+                var searchUrl = $("[name='txtSearch']").val()
+
+                $.ajax({
+                    url: '/short',
+                    type: 'POST',
+                    data: {
+                        txtSearch: searchUrl
+                    },
+                    dataType: 'json',
+                    success: function (cevap) {
+                        $(".alert-success").css('display', 'block')
+                        $(".shortUrlHref").attr("href", "http://localhost:8080/r/" + cevap.Data)
+                        $(".shortUrlHref").text("http://localhost:8080/r/" + cevap.Data)
+                    }
+                })
+            }
+        })
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row"><div class="col-md-12"><div class="jumbotron"></div></div></div>
+        <div class="row"><div class="col-md-12"><div class="jumbotron"></div></div></div>
+        <div class="row"><div class="col-md-12"><div class="jumbotron"></div></div></div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <label>Kısaltılacak URL:</label>
+                <input class="form-control" name="txtSearch">
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <button onclick="$.btnShort();" class="btn btn-primary btn-md pull-right">Kısalt</button>
+            </div>
+        </div>
+        <br />  
+        <div class="alert alert-success" style="display:none;">
+            <strong>Short URL: </strong> <a target="_blank" class="shortUrlHref"></a>
+        </div>
+    </div>
+</body>
+</html>
