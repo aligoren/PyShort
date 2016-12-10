@@ -4,7 +4,9 @@
 
 Python ve Bottle Framework Kullanılarak Basit URL Shortener
 
-Projede hashids ve bottle kullanıldı.
+Projede hashids ve bottle kullanıldı. Veritabanı seçimi SQLite üzerinde gerçekleştirildi. Ancak Mongo ve MySQL ile de çalışabiliyor. Veritabanı ayarlarınızı ona göre yaparsınız.
+
+MongoDB için PyPI Linki: [https://pypi.python.org/pypi/bottle-mongo/](https://pypi.python.org/pypi/bottle-mongo/)
 
 Front-end kısmında ise Bootstrap ve JQuery Kullanıldı. Örnek olması açısından.
 
