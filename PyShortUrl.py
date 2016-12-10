@@ -3,11 +3,11 @@ from hashids import Hashids
 import sqlite3, os
 
 conn = ''
-if not os.path.isfile('test.db'):
-    conn = sqlite3.connect('test.db')
+if not os.path.isfile('shortdb.db'):
+    conn = sqlite3.connect('shortdb.db')
     conn.execute('CREATE TABLE "shorted" ("ID"  INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "ShortID"  TEXT, "Url"  TEXT );')
 else:
-    conn = sqlite3.connect('test.db')
+    conn = sqlite3.connect('shortdb.db')
 
 
 
